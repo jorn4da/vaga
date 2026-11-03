@@ -372,10 +372,16 @@ form{display:grid;gap:16px;margin-top:6px}
       'Registro CRECI':g('entry.1868316806'),
       'Disponibilidade de horário':g('entry.294540504'),
       'Data do cadastro':new Date().toLocaleString('pt-BR',{timeZone:'America/Sao_Paulo'}),
-      'Página':location.href
+      'Origem':'Página Vaga Corretor (Netlify)'
     };
-    var envioEmail=fetch(EMAIL_URL,{method:'POST',headers:{'Content-Type':'application/json','Accept':'application/json'},body:JSON.stringify(dados)})
-      .catch(function(){});
+    var corpo=JSON.stringify(dados);
+    function beacon(){try{if(navigator.sendBeacon){navigator.sendBeacon(EMAIL_URL,new Blob([corpo],{type:'application/json'}));}}catch(x){}}
+    var envioEmail=fetch(EMAIL_URL,{method:'POST',keepalive:true,headers:{'Content-Type':'application/json','Accept':'application/json'},body:corpo})
+      .then(function(r){return r.json()}).then(function(j){
+        try{console.log('[vaga] FormSubmit:',j)}catch(x){}
+        if(!j||String(j.success)!=='true'){ev('erro_email_candidatura',{msg:(j&&j.message)||'sem resposta'});}
+      })
+      .catch(function(e){try{console.log('[vaga] FormSubmit erro',e)}catch(x){} beacon();});
     var limite=new Promise(function(r){setTimeout(r,6000)}); // não deixa o candidato esperando mais de 6s
     Promise.race([Promise.all([envioForms,envioEmail]),limite])
       .finally(function(){

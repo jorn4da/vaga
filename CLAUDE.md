@@ -38,6 +38,7 @@ As respostas vão direto para o Google Forms original (mesma planilha de respost
 
 **Cópia por e-mail (03/11/2026):** cada cadastro também é enviado para imoveisjornada@gmail.com via FormSubmit (`https://formsubmit.co/ajax/imoveisjornada@gmail.com`, variável `EMAIL_URL`), assunto "Novo cadastro | Vaga Corretor de Imóveis | Nome", com todas as respostas em tabela + link direto do WhatsApp. Os dois envios (Forms e e-mail) rodam juntos; o candidato espera no máximo 6s.
 Se for o primeiro envio deste site, o FormSubmit pode mandar um e-mail de ativação: clicar em "Activate Form".
+03/11/2026: 1º teste real do Aritan não chegou no Gmail (nem e-mail de ativação). Reforçado: keepalive + sendBeacon de reserva, log `[vaga] FormSubmit:` no console e evento GA4 `erro_email_candidatura` se o FormSubmit recusar. Reserva recomendada: notificação nativa do Google Forms (Respostas > ⋮ > Receber notificações por e-mail).
 
 Se alguma pergunta mudar no Google Forms, atualizar o `name` do input correspondente.
 Após enviar: mensagem de agradecimento do formulário + botão WhatsApp (21) 95943-4519 com o primeiro nome.
