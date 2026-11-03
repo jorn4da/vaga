@@ -36,15 +36,14 @@ As respostas vão direto para o Google Forms original (mesma planilha de respost
 | Registro no CRECI (só aparece se SIM) | entry.1868316806 | não |
 | Disponibilidade (Integral/Manhã/Tarde) | entry.294540504 | sim |
 
-**Cópia por e-mail (03/11/2026):** cada cadastro também é enviado para imoveisjornada@gmail.com via FormSubmit (`https://formsubmit.co/ajax/imoveisjornada@gmail.com`, variável `EMAIL_URL`), assunto "Novo cadastro | Vaga Corretor de Imóveis | Nome", com todas as respostas em tabela + link direto do WhatsApp. Os dois envios (Forms e e-mail) rodam juntos; o candidato espera no máximo 6s.
-Se for o primeiro envio deste site, o FormSubmit pode mandar um e-mail de ativação: clicar em "Activate Form".
-03/11/2026: 1º teste real do Aritan não chegou no Gmail (nem e-mail de ativação). Reforçado: keepalive + sendBeacon de reserva, log `[vaga] FormSubmit:` no console e evento GA4 `erro_email_candidatura` se o FormSubmit recusar. Reserva recomendada: notificação nativa do Google Forms (Respostas > ⋮ > Receber notificações por e-mail).
+**E-mail do cadastro (03/11/2026, versão atual): Netlify Forms.** O formulário oculto `candidatura` (data-netlify) é detectado no deploy; o JS faz POST urlencoded para `/` com `form-name=candidatura`. A notificação por e-mail para imoveisjornada@gmail.com é configurada no Netlify (Project configuration > Notifications > Form submission notifications). FormSubmit foi REMOVIDO (não entregava).
+**REGRA do Aritan:** cadastro de candidato NÃO vai para planilha de LEADS/ACOMPANHAMENTO nem nenhuma outra planilha nova; só e-mail. Não mexer no Apps Script LEADS por causa desta página.
 
 Se alguma pergunta mudar no Google Forms, atualizar o `name` do input correspondente.
 Após enviar: mensagem de agradecimento do formulário + botão WhatsApp (21) 95943-4519 com o primeiro nome.
 
 ## Política de Privacidade (03/11/2026)
-`privacidade.html` (LGPD): controlador Aritan Nakia Moreira Cordeiro / Aritan Especialista, contato imoveisjornada@gmail.com. Link no aviso de consentimento abaixo do botão de envio e no fim do painel azul. Retenção 12 meses. Cita compartilhamento com Google, FormSubmit, Netlify, GA4, Meta e a construtora parceira da vaga.
+`privacidade.html` (LGPD): controlador Aritan Nakia Moreira Cordeiro / Aritan Especialista, contato imoveisjornada@gmail.com. Link no aviso de consentimento abaixo do botão de envio e no fim do painel azul. Retenção 12 meses. Cita compartilhamento com Google, Netlify, GA4, Meta e a construtora parceira da vaga.
 
 ## Stack
 HTML/CSS/JS estático, arquivo único `index.html`. Fontes self-hosted em `fonts/` (Bebas Neue + Poppins).

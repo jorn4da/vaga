@@ -182,6 +182,7 @@ form{display:grid;gap:16px;margin-top:6px}
 </style>
 </head>
 <body>
+<form name="candidatura" data-netlify="true" netlify-honeypot="bot-field" hidden><input name="bot-field"><input name="Nome"><input name="WhatsApp"><input name="Nascimento"><input name="CEP"><input name="Endereco"><input name="Comeca imediatamente"><input name="Anos de experiencia em vendas"><input name="Tem CRECI"><input name="Registro CRECI"><input name="Disponibilidade de horario"><input name="Link WhatsApp"></form>
 <main class="palco">
   <picture class="foto" aria-hidden="true">
     <source srcset="img/aritan.webp" type="image/webp">
@@ -305,7 +306,6 @@ form{display:grid;gap:16px;margin-top:6px}
 <script>
 (function(){
   var FORM_URL='https://docs.google.com/forms/d/e/1FAIpQLSf-r8f2DFkVQgGLUg5H0P4COv4rV8xvl6BCLwrMBYkltv7oBQ/formResponse';
-  var EMAIL_URL='https://formsubmit.co/ajax/imoveisjornada@gmail.com';
   var $=function(s){return document.querySelector(s)};
   var rol=$('#rolagem'), dica=$('#dica'), form=$('#form');
 
@@ -355,33 +355,24 @@ form{display:grid;gap:16px;margin-top:6px}
     // 1) Google Forms (planilha de respostas)
     var envioForms=fetch(FORM_URL,{method:'POST',mode:'no-cors',headers:{'Content-Type':'application/x-www-form-urlencoded'},body:body})
       .catch(function(){new Image().src=FORM_URL+'?'+body+'&submit=Submit';});
-    // 2) E-mail para imoveisjornada@gmail.com (FormSubmit)
+    // 2) E-mail para imoveisjornada@gmail.com via Netlify Forms (form "candidatura"; sem planilha)
     var g=function(k){return fd.get(k)||'-'};
-    var dados={
-      _subject:'Novo cadastro | Vaga Corretor de Imóveis | '+$('#nome').value.trim(),
-      _template:'table',_captcha:'false',
-      'Nome completo':g('entry.243228665'),
-      'WhatsApp':g('entry.1969745615'),
-      'Link WhatsApp':'https://wa.me/55'+String(fd.get('entry.1969745615')||'').replace(/\D/g,''),
-      'Data de nascimento':g('entry.1183170890'),
-      'CEP':g('entry.96283891'),
-      'Endereço':g('entry.884526706'),
-      'Começa imediatamente?':g('entry.1982846341'),
-      'Anos de experiência com vendas':g('entry.844598664'),
-      'Tem CRECI?':g('entry.121096117'),
-      'Registro CRECI':g('entry.1868316806'),
-      'Disponibilidade de horário':g('entry.294540504'),
-      'Data do cadastro':new Date().toLocaleString('pt-BR',{timeZone:'America/Sao_Paulo'}),
-      'Origem':'Página Vaga Corretor (Netlify)'
-    };
-    var corpo=JSON.stringify(dados);
-    function beacon(){try{if(navigator.sendBeacon){navigator.sendBeacon(EMAIL_URL,new Blob([corpo],{type:'application/json'}));}}catch(x){}}
-    var envioEmail=fetch(EMAIL_URL,{method:'POST',keepalive:true,headers:{'Content-Type':'application/json','Accept':'application/json'},body:corpo})
-      .then(function(r){return r.json()}).then(function(j){
-        try{console.log('[vaga] FormSubmit:',j)}catch(x){}
-        if(!j||String(j.success)!=='true'){ev('erro_email_candidatura',{msg:(j&&j.message)||'sem resposta'});}
-      })
-      .catch(function(e){try{console.log('[vaga] FormSubmit erro',e)}catch(x){} beacon();});
+    var nf=new URLSearchParams();
+    nf.append('form-name','candidatura');
+    nf.append('Nome',g('entry.243228665'));
+    nf.append('WhatsApp',g('entry.1969745615'));
+    nf.append('Nascimento',g('entry.1183170890'));
+    nf.append('CEP',g('entry.96283891'));
+    nf.append('Endereco',g('entry.884526706'));
+    nf.append('Comeca imediatamente',g('entry.1982846341'));
+    nf.append('Anos de experiencia em vendas',g('entry.844598664'));
+    nf.append('Tem CRECI',g('entry.121096117'));
+    nf.append('Registro CRECI',g('entry.1868316806'));
+    nf.append('Disponibilidade de horario',g('entry.294540504'));
+    nf.append('Link WhatsApp','https://wa.me/55'+String(fd.get('entry.1969745615')||'').replace(/\D/g,''));
+    var envioEmail=fetch('/',{method:'POST',keepalive:true,headers:{'Content-Type':'application/x-www-form-urlencoded'},body:nf.toString()})
+      .then(function(r){if(!r.ok)ev('erro_email_candidatura',{status:r.status});})
+      .catch(function(){ev('erro_email_candidatura',{status:'rede'});});
     var limite=new Promise(function(r){setTimeout(r,6000)}); // não deixa o candidato esperando mais de 6s
     Promise.race([Promise.all([envioForms,envioEmail]),limite])
       .finally(function(){
