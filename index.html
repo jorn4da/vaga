@@ -38,12 +38,14 @@
 }
 *{box-sizing:border-box;margin:0;padding:0}
 html,body{height:100%}
+html{-webkit-text-size-adjust:100%}
+a,button,label{-webkit-tap-highlight-color:transparent}
 body{
   font-family:'Poppins',system-ui,sans-serif;color:#fff;
   background:#111 linear-gradient(115deg,#000 0%,#1a1a1a 35%,#3a3a3a 70%,#505050 100%);
   min-height:100svh;overflow-x:hidden;
 }
-.palco{position:relative;height:100svh;min-height:640px;max-width:1180px;margin:0 auto;display:flex;flex-direction:column}
+.palco{position:relative;height:100svh;min-height:520px;max-width:1180px;margin:0 auto;display:flex;flex-direction:column}
 
 /* Foto de fundo */
 .foto{
@@ -68,7 +70,7 @@ header.topo{position:relative;z-index:3;text-align:center;padding:28px 20px 8px;
   display:flex;flex-direction:column;flex:1;min-height:0;
 }
 .rolagem{
-  overflow-y:auto;flex:1;min-height:0;
+  overflow-y:auto;flex:1;min-height:0;position:relative;overscroll-behavior:contain;
   padding:28px 34px 70px 46px;scroll-behavior:smooth;
   scrollbar-width:thin;scrollbar-color:#6E9BFF rgba(255,255,255,.08);
 }
@@ -105,7 +107,7 @@ form{display:grid;gap:16px;margin-top:6px}
 .campo .msg{display:none;color:#FFB4B4;font-size:12.5px;margin-top:5px}
 .campo.invalido .msg{display:block}
 .opcoes{display:flex;flex-wrap:wrap;gap:10px}
-.opcoes label{margin:0;cursor:pointer}
+.opcoes label{margin:0;cursor:pointer;position:relative}
 .opcoes input{position:absolute;opacity:0;pointer-events:none}
 .opcoes span{display:inline-block;padding:10px 18px;border-radius:30px;border:1.5px solid rgba(255,255,255,.35);font-weight:600;font-size:15px;transition:.2s}
 .opcoes input:checked+span{background:#fff;color:var(--azul);border-color:#fff}
@@ -129,11 +131,24 @@ form{display:grid;gap:16px;margin-top:6px}
 .saiba{position:absolute;z-index:3;right:6%;bottom:56px;font-weight:800;font-size:clamp(26px,3.2vw,44px);color:#fff;text-decoration:none;text-shadow:0 3px 14px rgba(0,0,0,.6)}
 .saiba:hover{text-decoration:underline}
 
+/* Computador: coluna da esquerda (títulos + painel), foto na direita */
+@media (min-width:861px){
+  .palco{max-width:1320px;padding:0 2%}
+  header.topo{text-align:left;padding:3.2vh 0 0 4%;width:auto}
+  .estamos{font-size:clamp(34px,min(5vw,7vh),80px)}
+  .contratando{font-size:clamp(56px,min(10vw,14.5vh),156px)}
+  .cargo{padding:1vh 0 0 4%}
+  .vendedor{font-size:clamp(30px,min(5vw,7vh),74px)}
+  .corretor{font-size:clamp(20px,min(3.2vw,4.6vh),48px);margin-top:.4vh}
+  .painel{width:min(660px,54%);margin-top:2vh}
+  .foto{right:1%;height:min(95svh,1000px)}
+  .saiba{right:7%;bottom:7vh}
+}
 /* Tablet e celular */
 @media (max-width:860px){
-  .foto{top:96px;bottom:auto;height:min(46vw,300px);right:-24px}
-  .cargo{max-width:62%}
-  .cargo{padding-left:20px}
+  .foto{top:max(70px,9svh);bottom:auto;height:min(46vw,300px);right:-24px}
+  .cargo{max-width:66%;padding-left:20px}
+  .corretor{font-size:clamp(20px,6.2vw,36px)}
   .painel{width:calc(100% - 20px);border-radius:0 26px 26px 0}
   .rolagem{padding:22px 20px 64px 22px}
   .dica-rolar{padding-left:22px}
@@ -142,8 +157,23 @@ form{display:grid;gap:16px;margin-top:6px}
   .sonhos{font-size:24px}
 }
 @media (max-width:480px){
-  header.topo{padding-top:18px}
+  header.topo{padding-top:16px}
+  .contratando{font-size:clamp(58px,19vw,96px)}
+  .estamos{font-size:clamp(34px,11vw,56px)}
+  .vendedor{font-size:clamp(32px,10.5vw,50px)}
+  .cargo{max-width:72%}
+  .corretor{font-size:clamp(17px,5.4vw,28px);white-space:nowrap;letter-spacing:-.5px}
   .dois{grid-template-columns:1fr}
+  h2{font-size:22px}
+}
+/* Telas baixas (celular deitado, janela pequena): a página rola inteira */
+@media (max-height:560px){
+  .palco{height:auto;min-height:100svh}
+  .painel{flex:none}
+  .rolagem{overflow:visible;flex:none}
+  .dica-rolar{display:none}
+  .foto{position:absolute;top:16px;bottom:auto;height:300px}
+  .saiba{display:none}
 }
 @media (prefers-reduced-motion:reduce){*{animation:none!important;transition:none!important;scroll-behavior:auto!important}}
 </style>

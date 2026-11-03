@@ -12,6 +12,12 @@ Página de recrutamento "Estamos contratando: Vendedor / Corretor de Imóvel" no
 (fundo preto→cinza, painel azul #062E6E, foto do Aritan à direita).
 O painel azul tem barra de rolagem própria com: Requisitos, Benefícios e o formulário de inscrição.
 
+## Layout responsivo (03/11/2026)
+- Computador (>860px): títulos e painel azul na coluna esquerda, foto grande na direita, "SAIBA MAIS..." leva ao formulário. Tamanhos dos títulos se ajustam à altura da tela (vh) para o painel sempre ter espaço.
+- Celular/tablet (<=860px): títulos no topo, foto menor ao lado de "Vendedor", painel azul ocupa o resto da tela com rolagem própria.
+- Telas baixas (<=560px de altura, celular deitado): a página rola inteira, sem rolagem interna.
+- Testado em 1920x1080, 1366x768, 1280x720, iPad em pé e deitado, iPhone SE, iPhone 13 e Galaxy.
+
 ## Formulário
 As respostas vão direto para o Google Forms original (mesma planilha de respostas):
 `https://docs.google.com/forms/d/e/1FAIpQLSf-r8f2DFkVQgGLUg5H0P4COv4rV8xvl6BCLwrMBYkltv7oBQ/formResponse`
