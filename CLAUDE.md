@@ -42,6 +42,9 @@ Se for o primeiro envio deste site, o FormSubmit pode mandar um e-mail de ativa�
 Se alguma pergunta mudar no Google Forms, atualizar o `name` do input correspondente.
 Após enviar: mensagem de agradecimento do formulário + botão WhatsApp (21) 95943-4519 com o primeiro nome.
 
+## Política de Privacidade (03/11/2026)
+`privacidade.html` (LGPD): controlador Aritan Nakia Moreira Cordeiro / Aritan Especialista, contato imoveisjornada@gmail.com. Link no aviso de consentimento abaixo do botão de envio e no fim do painel azul. Retenção 12 meses. Cita compartilhamento com Google, FormSubmit, Netlify, GA4, Meta e a construtora parceira da vaga.
+
 ## Stack
 HTML/CSS/JS estático, arquivo único `index.html`. Fontes self-hosted em `fonts/` (Bebas Neue + Poppins).
 Foto: `img/aritan.webp` (+ `aritan.png` fallback), recorte sem fundo.
