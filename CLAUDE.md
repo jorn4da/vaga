@@ -8,6 +8,7 @@ Em QUALQUER solicitação sobre este projeto, antes de começar:
 Antes de alterar ou publicar: atualizar a nota do Obsidian e a memória. Depois: registrar o que mudou.
 
 ## O que é
+Local da vaga: NITERÓI E RIO DE JANEIRO (alterado em 03/11/2026, antes era Centro - RJ).
 Página de recrutamento "Estamos contratando: Vendedor / Corretor de Imóvel" no visual do flyer
 (fundo preto→cinza, painel azul #062E6E, foto do Aritan à direita).
 O painel azul tem barra de rolagem própria com: Requisitos, Benefícios e o formulário de inscrição.
