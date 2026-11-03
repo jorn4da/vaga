@@ -26,6 +26,7 @@
 </script>
 
 <style>
+form[name=candidatura]{display:none!important}
 @font-face{font-family:'Bebas Neue';font-style:normal;font-weight:400;font-display:swap;src:url(fonts/bebas-neue-latin-400-normal.woff2) format('woff2')}
 @font-face{font-family:'Poppins';font-style:normal;font-weight:300;font-display:swap;src:url(fonts/poppins-latin-300-normal.woff2) format('woff2')}
 @font-face{font-family:'Poppins';font-style:normal;font-weight:400;font-display:swap;src:url(fonts/poppins-latin-400-normal.woff2) format('woff2')}
@@ -182,7 +183,7 @@ form{display:grid;gap:16px;margin-top:6px}
 </style>
 </head>
 <body>
-<form name="candidatura" data-netlify="true" netlify-honeypot="bot-field" hidden><input name="bot-field"><input name="Nome"><input name="WhatsApp"><input name="Nascimento"><input name="CEP"><input name="Endereco"><input name="Comeca imediatamente"><input name="Anos de experiencia em vendas"><input name="Tem CRECI"><input name="Registro CRECI"><input name="Disponibilidade de horario"><input name="Link WhatsApp"></form>
+<div style="display:none!important" aria-hidden="true"><form name="candidatura" data-netlify="true" netlify-honeypot="bot-field"><input name="bot-field"><input name="Nome"><input name="WhatsApp"><input name="Nascimento"><input name="CEP"><input name="Endereco"><input name="Comeca imediatamente"><input name="Anos de experiencia em vendas"><input name="Tem CRECI"><input name="Registro CRECI"><input name="Disponibilidade de horario"><input name="Link WhatsApp"></form></div>
 <main class="palco">
   <picture class="foto" aria-hidden="true">
     <source srcset="img/aritan.webp" type="image/webp">
