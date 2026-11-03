@@ -20,7 +20,8 @@ O painel azul tem barra de rolagem própria com: Requisitos, Benefícios e o for
 - Testado em 1920x1080, 1366x768, 1280x720, iPad em pé e deitado, iPhone SE, iPhone 13 e Galaxy.
 
 ## Formulário
-As respostas vão direto para o Google Forms original (mesma planilha de respostas):
+SÓ E-MAIL (decisão do Aritan, 03/11/2026): a página NÃO envia mais para o Google Forms. Os entry IDs abaixo ficam só como referência dos campos (os inputs usam esses `name`).
+Google Forms original (desligado):
 `https://docs.google.com/forms/d/e/1FAIpQLSf-r8f2DFkVQgGLUg5H0P4COv4rV8xvl6BCLwrMBYkltv7oBQ/formResponse`
 
 | Pergunta | entry | Obrigatória |
@@ -43,7 +44,7 @@ Se alguma pergunta mudar no Google Forms, atualizar o `name` do input correspond
 Após enviar: mensagem de agradecimento do formulário + botão WhatsApp (21) 95943-4519 com o primeiro nome.
 
 ## Política de Privacidade (03/11/2026)
-`privacidade.html` (LGPD): controlador Aritan Nakia Moreira Cordeiro / Aritan Especialista, contato imoveisjornada@gmail.com. Link no aviso de consentimento abaixo do botão de envio e no fim do painel azul. Retenção 12 meses. Cita compartilhamento com Google, Netlify, GA4, Meta e a construtora parceira da vaga.
+`privacidade.html` (LGPD): controlador Aritan Nakia Moreira Cordeiro / Aritan Especialista, contato imoveisjornada@gmail.com. Link no aviso de consentimento abaixo do botão de envio e no fim do painel azul. Retenção 12 meses. Cita compartilhamento com Netlify, GA4, Meta e a construtora parceira da vaga.
 
 ## Stack
 HTML/CSS/JS estático, arquivo único `index.html`. Fontes self-hosted em `fonts/` (Bebas Neue + Poppins).

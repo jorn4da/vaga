@@ -305,7 +305,6 @@ form{display:grid;gap:16px;margin-top:6px}
 
 <script>
 (function(){
-  var FORM_URL='https://docs.google.com/forms/d/e/1FAIpQLSf-r8f2DFkVQgGLUg5H0P4COv4rV8xvl6BCLwrMBYkltv7oBQ/formResponse';
   var $=function(s){return document.querySelector(s)};
   var rol=$('#rolagem'), dica=$('#dica'), form=$('#form');
 
@@ -351,11 +350,7 @@ form{display:grid;gap:16px;margin-top:6px}
     var btn=$('#enviar');btn.disabled=true;btn.textContent='ENVIANDO...';
     var fd=new FormData(form);
     if($('#campoCreci').classList.contains('oculto'))fd.delete('entry.1868316806');
-    var body=new URLSearchParams(fd).toString();
-    // 1) Google Forms (planilha de respostas)
-    var envioForms=fetch(FORM_URL,{method:'POST',mode:'no-cors',headers:{'Content-Type':'application/x-www-form-urlencoded'},body:body})
-      .catch(function(){new Image().src=FORM_URL+'?'+body+'&submit=Submit';});
-    // 2) E-mail para imoveisjornada@gmail.com via Netlify Forms (form "candidatura"; sem planilha)
+    // Único destino: e-mail para imoveisjornada@gmail.com via Netlify Forms (form "candidatura"; sem planilha)
     var g=function(k){return fd.get(k)||'-'};
     var nf=new URLSearchParams();
     nf.append('form-name','candidatura');
@@ -374,7 +369,7 @@ form{display:grid;gap:16px;margin-top:6px}
       .then(function(r){if(!r.ok)ev('erro_email_candidatura',{status:r.status});})
       .catch(function(){ev('erro_email_candidatura',{status:'rede'});});
     var limite=new Promise(function(r){setTimeout(r,6000)}); // não deixa o candidato esperando mais de 6s
-    Promise.race([Promise.all([envioForms,envioEmail]),limite])
+    Promise.race([envioEmail,limite])
       .finally(function(){
         ev('candidatura_vaga',{creci:fd.get('entry.121096117'),horario:fd.get('entry.294540504')});
         try{fbq('trackCustom','CandidaturaVaga')}catch(x){}
