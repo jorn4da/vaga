@@ -15,7 +15,7 @@ O painel azul tem barra de rolagem própria com: Requisitos, Benefícios e o for
 
 ## Layout responsivo (03/11/2026)
 - Computador (>860px): títulos e painel azul na coluna esquerda, foto grande na direita, "SAIBA MAIS..." leva ao formulário. Tamanhos dos títulos se ajustam à altura da tela (vh) para o painel sempre ter espaço.
-- Celular/tablet (<=860px): títulos no topo, foto menor ao lado de "Vendedor", painel azul ocupa o resto da tela com rolagem própria.
+- Celular/tablet (<=860px): títulos no topo, foto ao lado de "Vendedor" e POR CIMA das letras "CONTRATANDO" (z-index 4; painel azul z-index 5 fica sobre a base da foto), painel azul ocupa o resto da tela com rolagem própria.
 - Telas baixas (<=560px de altura, celular deitado): a página rola inteira, sem rolagem interna.
 - Testado em 1920x1080, 1366x768, 1280x720, iPad em pé e deitado, iPhone SE, iPhone 13 e Galaxy.
 
